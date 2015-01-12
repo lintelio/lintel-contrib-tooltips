@@ -1,0 +1,84 @@
+.tooltip {
+  background-color: rgba(0, 0, 0, 0.9);
+  border: 1px solid rgba(0, 0, 0, 0.9);
+  border-radius: 4px;
+  color: #fff;
+  font-size: 80%;
+  padding: 3px 6px;
+  margin-bottom: 12px;
+  position: absolute;
+  text-align: center; }
+  .tooltip:before, .tooltip:after {
+    content: '';
+    display: block;
+    left: 50%;
+    margin-left: -5px;
+    position: absolute;
+    top: 100%; }
+  .tooltip:before {
+    margin-top: 1px;
+    height: 0;
+    width: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 5px solid rgba(0, 0, 0, 0.9); }
+  .tooltip:after {
+    height: 0;
+    width: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 5px solid rgba(0, 0, 0, 0.9); }
+
+.tooltip-primary {
+  background: rgba(75, 119, 190, 0.9);
+  border-color: rgba(75, 119, 190, 0.9);
+  color: #fff; }
+  .tooltip-primary:before {
+    border-top-color: rgba(75, 119, 190, 0.9); }
+  .tooltip-primary:after {
+    border-top-color: rgba(75, 119, 190, 0.9); }
+
+.tooltip-secondary {
+  background: rgba(22, 160, 133, 0.9);
+  border-color: rgba(22, 160, 133, 0.9);
+  color: #fff; }
+  .tooltip-secondary:before {
+    border-top-color: rgba(22, 160, 133, 0.9); }
+  .tooltip-secondary:after {
+    border-top-color: rgba(22, 160, 133, 0.9); }
+
+.tooltip-error {
+  background: rgba(207, 58, 36, 0.9);
+  border-color: rgba(207, 58, 36, 0.9);
+  color: #fff; }
+  .tooltip-error:before {
+    border-top-color: rgba(207, 58, 36, 0.9); }
+  .tooltip-error:after {
+    border-top-color: rgba(207, 58, 36, 0.9); }
+
+.tooltip-warning {
+  background: rgba(235, 149, 50, 0.9);
+  border-color: rgba(235, 149, 50, 0.9);
+  color: #fff; }
+  .tooltip-warning:before {
+    border-top-color: rgba(235, 149, 50, 0.9); }
+  .tooltip-warning:after {
+    border-top-color: rgba(235, 149, 50, 0.9); }
+
+.tooltip-success {
+  background: rgba(122, 148, 46, 0.9);
+  border-color: rgba(122, 148, 46, 0.9);
+  color: #fff; }
+  .tooltip-success:before {
+    border-top-color: rgba(122, 148, 46, 0.9); }
+  .tooltip-success:after {
+    border-top-color: rgba(122, 148, 46, 0.9); }
+
+.tooltip-info {
+  background: rgba(89, 171, 227, 0.9);
+  border-color: rgba(89, 171, 227, 0.9);
+  color: #fff; }
+  .tooltip-info:before {
+    border-top-color: rgba(89, 171, 227, 0.9); }
+  .tooltip-info:after {
+    border-top-color: rgba(89, 171, 227, 0.9); }
