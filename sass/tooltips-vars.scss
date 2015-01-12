@@ -6,11 +6,11 @@ $tooltip-margin-y:          $cushion-y-lg !default;
 $tooltip-padding-y:         $cushion-y-xs - 2px !default;
 $tooltip-padding-x:         $cushion-x-xs - 2px !default;
 
+$tooltip-arrow-width:       10px;
 $tooltip-border-radius:     $border-radius-base !default;
-
 $tooltip-font-size:         $font-size-xs !default;
 
-$tooltip-arrow-width:       10px;
+$tooltip-include-states:    true;
 
 // Base
 $tooltip-base-bg:           rgba(0,0,0,.9) !default;
