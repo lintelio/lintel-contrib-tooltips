@@ -1,0 +1,32 @@
+{
+  "name": "lintel-contrib-tooltips",
+  "version": "0.1.0",
+  "description": "Tooltips for lintel.",
+  "homepage": "https://github.com/lintelio/lintel-contrib-tooltips",
+  "repository": "https://github.com/lintelio/lintel-contrib-tooltips.git",
+  "keywords": [
+    "lintelmodule",
+    "lintel"
+  ],
+  "main": [
+    "sass/tooltips.sass",
+    "dist/tooltips.min.css",
+    "dist/tooltips.min.js"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "lintel": "~0.1.6"
+  },
+  "devDependencies": {},
+  "ignore": [
+    "/.*",
+    "sass/lintel-core-loader.scss"
+  ],
+  "authors": [
+    {
+      "name": "Marius Craciunoiu",
+      "email": "",
+      "url": "mariusc23.com"
+    }
+  ]
+}
