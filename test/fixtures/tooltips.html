@@ -15,44 +15,58 @@
   <body class="pad">
 
     <div class="tooltip-container">
-      <div class="tooltip" role="tooltip">
-        Tooltip
+      <div class="tooltip tooltip-top" role="tooltip">
+        <div class="tooltip-content">
+          Tooltip
+        </div>
       </div>
     </div>
 
     <div class="tooltip-container">
-      <div class="tooltip tooltip-primary" role="tooltip">
-        Primary
+      <div class="tooltip tooltip-top tooltip-primary" role="tooltip">
+        <div class="tooltip-content">
+          Primary
+        </div>
       </div>
     </div>
 
     <div class="tooltip-container">
-      <div class="tooltip tooltip-secondary" role="tooltip">
-        Secondary
+      <div class="tooltip tooltip-top tooltip-secondary" role="tooltip">
+        <div class="tooltip-content">
+          Secondary
+        </div>
       </div>
     </div>
 
     <div class="tooltip-container">
-      <div class="tooltip tooltip-error" role="tooltip">
-        Error
+      <div class="tooltip tooltip-top tooltip-error" role="tooltip">
+        <div class="tooltip-content">
+          Error
+        </div>
       </div>
     </div>
 
     <div class="tooltip-container">
-      <div class="tooltip tooltip-warning" role="tooltip">
-        Warning
+      <div class="tooltip tooltip-top tooltip-warning" role="tooltip">
+        <div class="tooltip-content">
+          Warning
+        </div>
       </div>
     </div>
 
     <div class="tooltip-container">
-      <div class="tooltip tooltip-success" role="tooltip">
-        Success
+      <div class="tooltip tooltip-top tooltip-success" role="tooltip">
+        <div class="tooltip-content">
+          Success
+        </div>
       </div>
     </div>
 
     <div class="tooltip-container">
-      <div class="tooltip tooltip-info" role="tooltip">
-        Info
+      <div class="tooltip tooltip-top tooltip-info" role="tooltip">
+        <div class="tooltip-content">
+          Info
+        </div>
       </div>
     </div>
 
@@ -69,8 +83,100 @@
       Left
     </button>
 
+    <br><br>
+
+    <button type="button" title="HTML Example" data-toggle="tooltip" data-html="true" data-title="<h1>HTML Example</h1>">
+      HTML
+    </button>
+
+    <br><br>
+
+    <button id="function" type="button">
+      Function
+    </button>
+
+    <button id="promise-text" type="button">
+      Promise Text
+    </button>
+
+    <button id="promise-success" type="button">
+      Promise Success
+    </button>
+
+    <button id="promise-success-repeat" type="button">
+      Promise Repeat
+    </button>
+
+    <button id="promise-error" type="button">
+      Promise Error
+    </button>
+
     <script>
-      $('[data-toggle="tooltip"]').tooltip('init');
+      $('[data-toggle="tooltip"]').tooltip();
+
+      $('#function').tooltip({
+        title: function() {
+          return 'Success!';
+        }
+      });
+
+      $('#promise-text').tooltip({
+        title: function(tooltip, button) {
+          var deferred = $.Deferred();
+
+          setTimeout(function() {
+            deferred.resolve('Promise Success');
+          }.bind(this), 500);
+
+          return deferred;
+        }
+      });
+
+      $('#promise-success').tooltip({
+        title: function(tooltip, button) {
+          var deferred = $.Deferred();
+
+          setTimeout(function() {
+            deferred.resolve({
+              title: 'Promise Success',
+              state: 'success'
+            });
+          }.bind(this), 500);
+
+          return deferred;
+        }
+      });
+
+      $('#promise-success-repeat').tooltip({
+        title: function whatever(tooltip, button) {
+          var deferred = $.Deferred();
+
+          setTimeout(function() {
+            deferred.resolve({
+              title: 'Promise Success',
+              state: 'success',
+              callback: function() {
+                this.options.state = null;
+                this.options.title = whatever;
+              }
+            });
+          }.bind(this), 500);
+
+          return deferred;
+        }
+      });
+
+      $('#promise-error').tooltip({
+        title: function(tooltip, button) {
+          var deferred = $.Deferred();
+
+          setTimeout(function() {
+            deferred.reject(new Error('Promise Error'));
+          }.bind(this), 500);
+
+          return deferred;
+        }
+      });
     </script>
 
   </body>

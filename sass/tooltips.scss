@@ -23,9 +23,26 @@
   &:after {
     content: '';
     display: block;
+    position: absolute;
+    pointer-events: none;
+  }
+}
+
+
+// Placement
+// ---------
+.tooltip-top,
+.tooltip-bottom {
+  &:before,
+  &:after {
     left: 50%;
     margin-left: -($tooltip-arrow-width / 2);
-    position: absolute;
+  }
+}
+
+.tooltip-top {
+  &:before,
+  &:after {
     top: 100%;
   }
 
@@ -47,6 +64,88 @@
   }
 }
 
+.tooltip-bottom {
+  &:before,
+  &:after {
+    bottom: 100%;
+  }
+
+  &:before {
+    margin-top: 1px;
+    @include triangle(
+      $direction: 'up',
+      $size: $tooltip-arrow-width,
+      $color: $tooltip-base-border
+    );
+  }
+
+  &:after {
+    @include triangle(
+      $direction: 'up',
+      $size: $tooltip-arrow-width,
+      $color: $tooltip-base-bg
+    );
+  }
+}
+
+.tooltip-left,
+.tooltip-right {
+  &:before,
+  &:after {
+    top: 50%;
+    margin-top: -($tooltip-arrow-width / 2);
+  }
+}
+
+.tooltip-left {
+  &:before,
+  &:after {
+    left: 100%;
+  }
+
+  &:before {
+    margin-left: 1px;
+    @include triangle(
+      $direction: 'right',
+      $size: $tooltip-arrow-width,
+      $color: $tooltip-base-border
+    );
+  }
+
+  &:after {
+    @include triangle(
+      $direction: 'right',
+      $size: $tooltip-arrow-width,
+      $color: $tooltip-base-bg
+    );
+  }
+}
+
+.tooltip-right {
+  &:before,
+  &:after {
+    right: 100%;
+  }
+
+  &:before {
+    margin-right: 1px;
+    @include triangle(
+      $direction: 'left',
+      $size: $tooltip-arrow-width,
+      $color: $tooltip-base-border
+    );
+  }
+
+  &:after {
+    @include triangle(
+      $direction: 'left',
+      $size: $tooltip-arrow-width,
+      $color: $tooltip-base-bg
+    );
+  }
+}
+
+
 
 // States
 // ------
@@ -54,78 +153,30 @@
   // Primary
   .tooltip-primary {
     @include make-tooltip($bg: $tooltip-primary-bg, $border: $tooltip-primary-border, $text: $tooltip-primary-text);
-
-    &:before {
-      border-top-color: $tooltip-primary-border;
-    }
-
-    &:after {
-      border-top-color: $tooltip-primary-bg;
-    }
   }
 
   // Secondary
   .tooltip-secondary {
-    @include make-tooltip($bg: $tooltip-secondary-bg, $border: $tooltip-secondary-border, $text: $tooltip-secondary-text);
-
-    &:before {
-      border-top-color: $tooltip-secondary-border;
-    }
-
-    &:after {
-      border-top-color: $tooltip-secondary-bg;
-    }
+    @include make-tooltip($bg: $tooltip-secondary-bg, $border: $tooltip-secondary-border, $text: $tooltip-secondary-text)
   }
 
   // Error
   .tooltip-error {
-    @include make-tooltip($bg: $tooltip-error-bg, $border: $tooltip-error-border, $text: $tooltip-error-text);
-
-    &:before {
-      border-top-color: $tooltip-error-border;
-    }
-
-    &:after {
-      border-top-color: $tooltip-error-bg;
-    }
+    @include make-tooltip($bg: $tooltip-error-bg, $border: $tooltip-error-border, $text: $tooltip-error-text)
   }
 
   // Warning
   .tooltip-warning {
-    @include make-tooltip($bg: $tooltip-warning-bg, $border: $tooltip-warning-border, $text: $tooltip-warning-text);
-
-    &:before {
-      border-top-color: $tooltip-warning-border;
-    }
-
-    &:after {
-      border-top-color: $tooltip-warning-bg;
-    }
+    @include make-tooltip($bg: $tooltip-warning-bg, $border: $tooltip-warning-border, $text: $tooltip-warning-text)
   }
 
   // Success
   .tooltip-success {
-    @include make-tooltip($bg: $tooltip-success-bg, $border: $tooltip-success-border, $text: $tooltip-success-text);
-
-    &:before {
-      border-top-color: $tooltip-success-border;
-    }
-
-    &:after {
-      border-top-color: $tooltip-success-bg;
-    }
+    @include make-tooltip($bg: $tooltip-success-bg, $border: $tooltip-success-border, $text: $tooltip-success-text)
   }
 
   // Info
   .tooltip-info {
-    @include make-tooltip($bg: $tooltip-info-bg, $border: $tooltip-info-border, $text: $tooltip-info-text);
-
-    &:before {
-      border-top-color: $tooltip-info-border;
-    }
-
-    &:after {
-      border-top-color: $tooltip-info-bg;
-    }
+    @include make-tooltip($bg: $tooltip-info-bg, $border: $tooltip-info-border, $text: $tooltip-info-text)
   }
 }

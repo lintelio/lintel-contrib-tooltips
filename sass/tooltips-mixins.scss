@@ -5,4 +5,44 @@
   @if $bg     { background: $bg; }
   @if $border { border-color: $border; }
   @if $text   { color: $text; }
+
+  &.tooltip-top {
+    &:before {
+      border-top-color: $border;
+    }
+
+    &:after {
+      border-top-color: $bg;
+    }
+  }
+
+  &.tooltip-right {
+    &:before {
+      border-right-color: $border;
+    }
+
+    &:after {
+      border-right-color: $bg;
+    }
+  }
+
+  &.tooltip-bottom {
+    &:before {
+      border-bottom-color: $border;
+    }
+
+    &:after {
+      border-bottom-color: $bg;
+    }
+  }
+
+  &.tooltip-left {
+    &:before {
+      border-left-color: $border;
+    }
+
+    &:after {
+      border-left-color: $bg;
+    }
+  }
 }
