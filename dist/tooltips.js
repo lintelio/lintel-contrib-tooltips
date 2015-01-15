@@ -14,6 +14,7 @@
   };
 
   Tooltip.prototype.show = function(e) {
+
     console.log(e);
   };
 

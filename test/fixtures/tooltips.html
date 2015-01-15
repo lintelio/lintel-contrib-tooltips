@@ -15,46 +15,63 @@
   <body class="pad">
 
     <div class="tooltip-container">
-      <div class="tooltip">
+      <div class="tooltip" role="tooltip">
         Tooltip
       </div>
     </div>
 
     <div class="tooltip-container">
-      <div class="tooltip tooltip-primary">
+      <div class="tooltip tooltip-primary" role="tooltip">
         Primary
       </div>
     </div>
 
     <div class="tooltip-container">
-      <div class="tooltip tooltip-secondary">
+      <div class="tooltip tooltip-secondary" role="tooltip">
         Secondary
       </div>
     </div>
 
     <div class="tooltip-container">
-      <div class="tooltip tooltip-error">
+      <div class="tooltip tooltip-error" role="tooltip">
         Error
       </div>
     </div>
 
     <div class="tooltip-container">
-      <div class="tooltip tooltip-warning">
+      <div class="tooltip tooltip-warning" role="tooltip">
         Warning
       </div>
     </div>
 
     <div class="tooltip-container">
-      <div class="tooltip tooltip-success">
+      <div class="tooltip tooltip-success" role="tooltip">
         Success
       </div>
     </div>
 
     <div class="tooltip-container">
-      <div class="tooltip tooltip-info">
+      <div class="tooltip tooltip-info" role="tooltip">
         Info
       </div>
     </div>
+
+    <button type="button" title="Tooltip Top" data-toggle="tooltip" data-placement="top">
+      Top
+    </button>
+    <button type="button" title="Tooltip Right" data-toggle="tooltip" data-placement="right">
+      Right
+    </button>
+    <button type="button" title="Tooltip Bottom" data-toggle="tooltip" data-placement="bottom">
+      Bottom
+    </button>
+    <button type="button" title="Tooltip Left" data-toggle="tooltip" data-placement="left">
+      Left
+    </button>
+
+    <script>
+      $('[data-toggle="tooltip"]').tooltip('init');
+    </script>
 
   </body>
 </html>
