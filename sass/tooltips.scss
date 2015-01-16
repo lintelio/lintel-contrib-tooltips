@@ -13,10 +13,10 @@
 }
 
 .tooltip-content {
-  background-color: $tooltip-base-bg;
-  border: 1px solid $tooltip-base-border;
+  background-color: $tooltip-bg;
+  border: 1px solid $tooltip-border;
   border-radius: $tooltip-border-radius;
-  color: $tooltip-base-text;
+  color: $tooltip-text;
   font-size: $tooltip-font-size;
   padding: $tooltip-padding-y $tooltip-padding-x;
   position: relative;
@@ -56,7 +56,7 @@
     @include triangle(
       $direction: 'down',
       $size: $tooltip-arrow-width,
-      $color: $tooltip-base-border
+      $color: $tooltip-border
     );
   }
 
@@ -64,7 +64,7 @@
     @include triangle(
       $direction: 'down',
       $size: $tooltip-arrow-width,
-      $color: $tooltip-base-bg
+      $color: $tooltip-bg
     );
   }
 }
@@ -82,7 +82,7 @@
     @include triangle(
       $direction: 'up',
       $size: $tooltip-arrow-width,
-      $color: $tooltip-base-border
+      $color: $tooltip-border
     );
   }
 
@@ -90,7 +90,7 @@
     @include triangle(
       $direction: 'up',
       $size: $tooltip-arrow-width,
-      $color: $tooltip-base-bg
+      $color: $tooltip-bg
     );
   }
 }
@@ -118,7 +118,7 @@
     @include triangle(
       $direction: 'right',
       $size: $tooltip-arrow-width,
-      $color: $tooltip-base-border
+      $color: $tooltip-border
     );
   }
 
@@ -126,7 +126,7 @@
     @include triangle(
       $direction: 'right',
       $size: $tooltip-arrow-width,
-      $color: $tooltip-base-bg
+      $color: $tooltip-bg
     );
   }
 }
@@ -144,7 +144,7 @@
     @include triangle(
       $direction: 'left',
       $size: $tooltip-arrow-width,
-      $color: $tooltip-base-border
+      $color: $tooltip-border
     );
   }
 
@@ -152,7 +152,7 @@
     @include triangle(
       $direction: 'left',
       $size: $tooltip-arrow-width,
-      $color: $tooltip-base-bg
+      $color: $tooltip-bg
     );
   }
 }

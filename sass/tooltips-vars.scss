@@ -2,19 +2,17 @@
 // https://github.com/lintelio/lintel/blob/master/CONTRIBUTING.md
 
 // Global
+$tooltip-include-states:    true !default;
+
 $tooltip-padding-y:         3px !default;
 $tooltip-padding-x:         6px !default;
 
-$tooltip-arrow-width:       10px;
+$tooltip-arrow-width:       10px !default;
+$tooltip-bg:                rgba(0,0,0,.9) !default;
+$tooltip-border:            $tooltip-bg !default;
 $tooltip-border-radius:     $border-radius-base !default;
 $tooltip-font-size:         $font-size-xs !default;
-
-$tooltip-include-states:    true;
-
-// Base
-$tooltip-base-bg:           rgba(0,0,0,.9) !default;
-$tooltip-base-border:       $tooltip-base-bg !default;
-$tooltip-base-text:         #fff !default;
+$tooltip-text:              #fff !default;
 
 // Primary
 $tooltip-primary-bg:        transparentize($state-primary,.1) !default;
