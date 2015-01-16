@@ -34,55 +34,190 @@ You can use [wiredep](https://github.com/taptapship/wiredep) or [grunt-wiredep](
 ## Variables
 Check the vars file in the `sass` folder to see the full list of variables you can customize.
 
-#### $bacon-bg
-Default value: `#4b77be`  
+#### $tooltip-padding-y
+Default value: `3px`  
 
-Change the bacon background.
+Tooltip padding-top and padding-bottom.
 
-#### $bacon-border
-Default value: `#f00`  
+#### $tooltip-padding-x
+Default value: `6px`  
 
-Change the bacon border color.
+Tooltip padding-left and padding-right.
 
-#### $bacon-text
+#### $tooltip-arrow-width
+Default value: `10px`  
+
+#### $tooltip-border-radius
+Default value: `$border-radius-base`  
+
+#### $tooltip-font-size
+Default value: `$font-size-xs`  
+
+#### $tooltip-include-states
+Default value: `true`  
+
+Enable to disable styles for each state.
+
+#### $tooltip-base-bg
+Default value: `rgba(0,0,0,.9)`  
+
+#### $tooltip-base-border
+Default value: `$tooltip-base-bg`  
+
+#### $tooltip-base-text
 Default value: `#fff`  
 
-Change the bacon text color.
+#### $tooltip-*-bg
+Default value: `transparentize($state-*, 0.1)`  
+
+#### $tooltip-*-border
+Default value: `$tooltip-*-bg`  
+
+#### $tooltip-*-text
+Default value: `null`  
+
+Inherits from `$tooltip-base-text`.
 
 
 ## Mixins
 Check the mixins file in the `sass` folder to see how you can extend this module.
 
-#### make-bacon($bg, $border, $text)
-Default $bg: `$bacon-bg`  
-Default $border: `$bacon-border`  
-Default $text: `$bacon-text`  
-
-Sets the background, border, and text color of an element.
+#### tooltip-state($bg, $border, $text)
+Creates a new tooltip state, including arrow colors for each placement.
 
 ```scss
-.bacon-primary {
-  @include make-bacon(#fff, #f00, #000);
+.tooltip-primary {
+  @include tooltip-state(
+    $bg: $tooltip-primary-bg, 
+    $border: $tooltip-primary-border, 
+    $text: $tooltip-primary-text
+  );
 }
 ```
 
+## JavaScript
+
+You will have to call the jQuery plugin on each element you want to have a tooltip. 
+
+One way to do that would be to add `data-toggle="tooltip"` to all elements that should have a tooltip and call the following from your javascript:
+```js
+$('[data-toggle="tooltip"]').tooltip();
+```
+
+### Methods
+
+Name      | Type                           | Default             | Description
+--------- | ------------------------------ | ------------------- | -----------
+callback  | function                       |                     | Function to execute every time tooltip is shown / hidden.
+html      | Boolean                        | false               | Is the input HTML? Note: you must sanitize user input.
+state     | string                         |                     | Tooltip type (ex. `primary`, `error`, `success`, etc).
+placement | string                         | 'top'               | Top, right, bottom, or left.
+title     | string, function, $.Deferred() |                     | Can be a string, function, function that returns a deferred, or a deferred. <br><br> If using a function, result will be cached. To run function again, reset `this.options.title` to the same function in `callback`. See `test/fixtures/tooltip.html` for example.
+template  | string                         | see `js/tooltip.js` | Template must contains these elements: `.tooltip > .tooltip-content`. The content of `.tooltip-content` will only be visible if a promise is used.
 
 ## Examples
 
-#### Bacon
-```html
-<div class="bacon">
-  Hello world!
-</div>
+#### String Title
+```js
+$('#myButton').tooltip({
+  title: 'Tooltip Title'
+});
 ```
 
-#### Primary Bacon
-```html
-<div class="bacon bacon-primary">
-  Hello world!
-</div>
+#### Placement and State
+```js
+$('#myButton').tooltip({
+  title: 'Tooltip Title',
+  placement: 'right',
+  state: 'success'
+});
 ```
 
+#### HTML Content
+```js
+$('#myButton').tooltip({
+  title: '<h1>Big Title</h1>',
+  html: true
+});
+```
+
+#### Function 
+```js
+$('#myButton').tooltip({
+  title: function() {
+    return 'Tooltip Title';
+  }
+});
+```
+
+#### Async Function
+```js
+$('#myButton').tooltip({
+  title: function() {
+    var deferred = $.Deferred();
+
+    // Async action...
+    setTimeout(function() {
+      deferred.resolve({
+        title: 'Tooltip Title',
+        state: 'success'
+      });
+    }, 500);
+
+    return deferred;
+  }
+});
+```
+
+#### Async Function without Cache
+```js
+var myTooltipGetter = function(tooltip, button) {
+  var deferred = $.Deferred();
+
+  setTimeout(function() {
+    deferred.resolve({
+      title: 'Tooltip Title',
+      state: 'success',
+      callback: function() {
+        // reset state
+        this.options.state = null;
+        // reset title after displaying tooltip
+        this.options.title = myTooltipGetter;
+      }
+    });
+  }.bind(this), 500);
+
+  return deferred;
+};
+
+$('#myButton').tooltip({
+  title: myTooltipGetter
+});
+```
+
+#### Deferred
+```js
+var deferred = $.Deferred();
+
+$('#deferred').tooltip({
+  title: deferred
+});
+
+setTimeout(function() {
+  deferred.resolve({
+    title: 'Deferred Success',
+    state: 'success'
+  });
+}.bind(this), 1000);
+```
+
+#### Font Awesome Loading Icon
+```js
+$('#myButton').tooltip({
+  title: deferred,
+  template: `<div class="tooltip"><div class="tooltip-content"><i class="fa-li fa fa-spinner fa-spin"></i></div></div>`
+});
+```
 
 ## Contributing
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
