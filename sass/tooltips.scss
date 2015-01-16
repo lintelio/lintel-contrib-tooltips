@@ -9,14 +9,17 @@
 // Base
 // ----
 .tooltip {
+  position: absolute;
+}
+
+.tooltip-content {
   background-color: $tooltip-base-bg;
   border: 1px solid $tooltip-base-border;
   border-radius: $tooltip-border-radius;
   color: $tooltip-base-text;
   font-size: $tooltip-font-size;
   padding: $tooltip-padding-y $tooltip-padding-x;
-  margin-bottom: $tooltip-margin-y;
-  position: absolute;
+  position: relative;
   text-align: center;
 
   &:before,
@@ -31,8 +34,8 @@
 
 // Placement
 // ---------
-.tooltip-top,
-.tooltip-bottom {
+.tooltip-top > .tooltip-content,
+.tooltip-bottom > .tooltip-content {
   &:before,
   &:after {
     left: 50%;
@@ -40,7 +43,9 @@
   }
 }
 
-.tooltip-top {
+.tooltip-top > .tooltip-content {
+  top: -($tooltip-arrow-width / 2);
+
   &:before,
   &:after {
     top: 100%;
@@ -64,7 +69,9 @@
   }
 }
 
-.tooltip-bottom {
+.tooltip-bottom > .tooltip-content {
+  bottom: -($tooltip-arrow-width / 2);
+
   &:before,
   &:after {
     bottom: 100%;
@@ -88,8 +95,9 @@
   }
 }
 
-.tooltip-left,
-.tooltip-right {
+.tooltip-left > .tooltip-content,
+.tooltip-right > .tooltip-content {
+
   &:before,
   &:after {
     top: 50%;
@@ -97,7 +105,9 @@
   }
 }
 
-.tooltip-left {
+.tooltip-left > .tooltip-content {
+  left: -($tooltip-arrow-width / 2);
+
   &:before,
   &:after {
     left: 100%;
@@ -121,7 +131,9 @@
   }
 }
 
-.tooltip-right {
+.tooltip-right > .tooltip-content {
+  right: -($tooltip-arrow-width / 2);
+
   &:before,
   &:after {
     right: 100%;
@@ -152,31 +164,31 @@
 @if $tooltip-include-states == true {
   // Primary
   .tooltip-primary {
-    @include make-tooltip($bg: $tooltip-primary-bg, $border: $tooltip-primary-border, $text: $tooltip-primary-text);
+    @include tooltip-state($bg: $tooltip-primary-bg, $border: $tooltip-primary-border, $text: $tooltip-primary-text);
   }
 
   // Secondary
   .tooltip-secondary {
-    @include make-tooltip($bg: $tooltip-secondary-bg, $border: $tooltip-secondary-border, $text: $tooltip-secondary-text)
+    @include tooltip-state($bg: $tooltip-secondary-bg, $border: $tooltip-secondary-border, $text: $tooltip-secondary-text)
   }
 
   // Error
   .tooltip-error {
-    @include make-tooltip($bg: $tooltip-error-bg, $border: $tooltip-error-border, $text: $tooltip-error-text)
+    @include tooltip-state($bg: $tooltip-error-bg, $border: $tooltip-error-border, $text: $tooltip-error-text)
   }
 
   // Warning
   .tooltip-warning {
-    @include make-tooltip($bg: $tooltip-warning-bg, $border: $tooltip-warning-border, $text: $tooltip-warning-text)
+    @include tooltip-state($bg: $tooltip-warning-bg, $border: $tooltip-warning-border, $text: $tooltip-warning-text)
   }
 
   // Success
   .tooltip-success {
-    @include make-tooltip($bg: $tooltip-success-bg, $border: $tooltip-success-border, $text: $tooltip-success-text)
+    @include tooltip-state($bg: $tooltip-success-bg, $border: $tooltip-success-border, $text: $tooltip-success-text)
   }
 
   // Info
   .tooltip-info {
-    @include make-tooltip($bg: $tooltip-info-bg, $border: $tooltip-info-border, $text: $tooltip-info-text)
+    @include tooltip-state($bg: $tooltip-info-bg, $border: $tooltip-info-border, $text: $tooltip-info-text)
   }
 }

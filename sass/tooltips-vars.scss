@@ -2,9 +2,8 @@
 // https://github.com/lintelio/lintel/blob/master/CONTRIBUTING.md
 
 // Global
-$tooltip-margin-y:          $cushion-y-lg !default;
-$tooltip-padding-y:         $cushion-y-xs - 2px !default;
-$tooltip-padding-x:         $cushion-x-xs - 2px !default;
+$tooltip-padding-y:         3px !default;
+$tooltip-padding-x:         6px !default;
 
 $tooltip-arrow-width:       10px;
 $tooltip-border-radius:     $border-radius-base !default;
@@ -20,29 +19,29 @@ $tooltip-base-text:         #fff !default;
 // Primary
 $tooltip-primary-bg:        transparentize($state-primary,.1) !default;
 $tooltip-primary-border:    $tooltip-primary-bg !default;
-$tooltip-primary-text:      #fff !default;
+$tooltip-primary-text:      null !default;
 
 // Secondary
 $tooltip-secondary-bg:      transparentize($state-secondary,.1) !default;
 $tooltip-secondary-border:  $tooltip-secondary-bg !default;
-$tooltip-secondary-text:    #fff !default;
+$tooltip-secondary-text:    null !default;
 
 // Error
 $tooltip-error-bg:          transparentize($state-error,.1) !default;
 $tooltip-error-border:      $tooltip-error-bg !default;
-$tooltip-error-text:        #fff !default;
+$tooltip-error-text:        null !default;
 
 // Warning
 $tooltip-warning-bg:        transparentize($state-warning,.1) !default;
 $tooltip-warning-border:    $tooltip-warning-bg !default;
-$tooltip-warning-text:      #fff !default;
+$tooltip-warning-text:      null !default;
 
 // Success
 $tooltip-success-bg:        transparentize($state-success,.1) !default;
 $tooltip-success-border:    $tooltip-success-bg !default;
-$tooltip-success-text:      #fff !default;
+$tooltip-success-text:      null !default;
 
 // Info
 $tooltip-info-bg:           transparentize($state-info,.1) !default;
 $tooltip-info-border:       $tooltip-info-bg !default;
-$tooltip-info-text:         #fff !default;
+$tooltip-info-text:         null !default;

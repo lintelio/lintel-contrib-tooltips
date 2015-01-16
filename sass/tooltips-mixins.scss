@@ -1,12 +1,14 @@
 // Please try to maintain the same code style as outlined here:
 // https://github.com/lintelio/lintel/blob/master/CONTRIBUTING.md
 
-@mixin make-tooltip($bg, $border, $text) {
-  @if $bg     { background: $bg; }
-  @if $border { border-color: $border; }
-  @if $text   { color: $text; }
+@mixin tooltip-state($bg, $border, $text) {
+  .tooltip-content {
+    @if $bg     { background: $bg; }
+    @if $border { border-color: $border; }
+    @if $text   { color: $text; }
+  }
 
-  &.tooltip-top {
+  &.tooltip-top > .tooltip-content {
     &:before {
       border-top-color: $border;
     }
@@ -16,7 +18,7 @@
     }
   }
 
-  &.tooltip-right {
+  &.tooltip-right > .tooltip-content {
     &:before {
       border-right-color: $border;
     }
@@ -26,7 +28,7 @@
     }
   }
 
-  &.tooltip-bottom {
+  &.tooltip-bottom > .tooltip-content {
     &:before {
       border-bottom-color: $border;
     }
@@ -36,7 +38,7 @@
     }
   }
 
-  &.tooltip-left {
+  &.tooltip-left > .tooltip-content {
     &:before {
       border-left-color: $border;
     }

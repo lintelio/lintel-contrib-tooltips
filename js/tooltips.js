@@ -214,10 +214,11 @@
   }
 
   Plugin.defaults = {
-    template: '<div class="tooltip" role="tooltip"><div class="tooltip-content">Loading...</div></div>',
-    placement: 'top',
+    callback: function() {},
     html: false,
-    callback: function() {}
+    state: null,
+    placement: 'top',
+    template: '<div class="tooltip" role="tooltip"><div class="tooltip-content">Loading...</div></div>'
   };
 
   $.fn.tooltip = Plugin;
