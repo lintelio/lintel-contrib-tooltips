@@ -56,7 +56,7 @@ Default value: `$font-size-xs`
 #### $tooltip-include-states
 Default value: `true`  
 
-Enable to disable styles for each state.
+Enable or disable styles for the default states.
 
 #### $tooltip-base-bg
 Default value: `rgba(0,0,0,.9)`  
@@ -109,11 +109,11 @@ $('[data-toggle="tooltip"]').tooltip();
 Name      | Type                           | Default             | Description
 --------- | ------------------------------ | ------------------- | -----------
 callback  | function                       |                     | Function to execute every time tooltip is shown / hidden.
-html      | Boolean                        | false               | Is the input HTML? Note: you must sanitize user input.
-state     | string                         |                     | Tooltip type (ex. `primary`, `error`, `success`, etc).
+html      | Boolean                        | false               | Display HTML content. Note: you must sanitize user input.
+state     | string                         |                     | Tooltip type (ex. `primary`, `error`, `success`).
 placement | string                         | 'top'               | Top, right, bottom, or left.
 title     | string, function, $.Deferred() |                     | Can be a string, function, function that returns a deferred, or a deferred. <br><br> If using a function, result will be cached. To run function again, reset `this.options.title` to the same function in `callback`. See `test/fixtures/tooltip.html` for example.
-template  | string                         | see `js/tooltip.js` | Template must contains these elements: `.tooltip > .tooltip-content`. The content of `.tooltip-content` will only be visible if a promise is used.
+template  | string                         | see `js/tooltip.js` | Template must contain these elements: `.tooltip > .tooltip-content`. The content of `.tooltip-content` will only be visible if a promise is used.
 
 ## Examples
 
@@ -134,6 +134,7 @@ $('#myButton').tooltip({
 ```
 
 #### HTML Content
+**NOTE: You must sanitize user input.**
 ```js
 $('#myButton').tooltip({
   title: '<h1>Big Title</h1>',
@@ -199,7 +200,7 @@ $('#myButton').tooltip({
 ```js
 var deferred = $.Deferred();
 
-$('#deferred').tooltip({
+$('#myButton').tooltip({
   title: deferred
 });
 
@@ -217,6 +218,22 @@ $('#myButton').tooltip({
   title: deferred,
   template: `<div class="tooltip"><div class="tooltip-content"><i class="fa-li fa fa-spinner fa-spin"></i></div></div>`
 });
+```
+
+#### Data-Attributes
+```html
+<button data-title="Tooltip Title" data-placement="bottom" data-state="warning" data-toggle="tooltip" type="button">I have a tooltip.</button>
+``` 
+```js
+$('[data-toggle="tooltip"]').tooltip();
+```
+
+#### Title Attribute
+```html
+<button title="Tooltip Title" type="button">I have a tooltip.</button>
+``` 
+```js
+$('[data-toggle="tooltip"]').tooltip();
 ```
 
 ## Contributing
