@@ -10,6 +10,7 @@
 // ----
 .tooltip {
   position: absolute;
+  z-index: $tooltip-z-index;
 }
 
 .tooltip-content {

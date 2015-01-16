@@ -13,6 +13,7 @@ $tooltip-border:            $tooltip-bg !default;
 $tooltip-border-radius:     $border-radius-base !default;
 $tooltip-font-size:         $font-size-xs !default;
 $tooltip-text:              #fff !default;
+$tooltip-z-index:           $z-index-2xl !default;
 
 // Primary
 $tooltip-primary-bg:        transparentize($state-primary,.1) !default;
