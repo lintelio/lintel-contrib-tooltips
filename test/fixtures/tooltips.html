@@ -111,6 +111,16 @@
       Promise Error
     </button>
 
+    <button id="deferred" type="button">
+      Deferred
+    </button>
+
+    <br><br>
+
+    <button id="priority" type="button" title="Title" data-title="Data-title">
+      Priority
+    </button>
+
     <script>
       $('[data-toggle="tooltip"]').tooltip();
 
@@ -176,6 +186,24 @@
 
           return deferred;
         }
+      });
+
+      var deferred = $.Deferred();
+
+      $('#deferred').tooltip({
+        title: deferred
+      });
+
+      setTimeout(function() {
+        deferred.resolve({
+          title: 'Deferred Success',
+          state: 'success'
+        });
+      }.bind(this), 1000);
+
+
+      $('#priority').tooltip({
+        title: 'Init'
       });
     </script>
 

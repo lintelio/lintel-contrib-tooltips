@@ -54,7 +54,7 @@
           this.options = $.extend(this.options, options);
         }
         else {
-          this.options.title = options;
+          this.options.title = options.toString();
         }
 
         // Set content
@@ -101,15 +101,22 @@
   Tooltip.prototype.getTitle = function($tooltip) {
     var deferred = $.Deferred();
 
-    if (typeof this.options.title === 'function') {
+    if (typeof this.options.title === 'string') {
+      deferred.resolve(this.options.title);
+    }
+    else if (typeof this.options.title === 'function') {
       $.when(this.options.title.call(this, $tooltip, this.$trigger)).then(function(result) {
         deferred.resolve(result);
       }, function(err) {
         deferred.reject(err);
       });
     }
-    else if (typeof this.options.title === 'string') {
-      deferred.resolve(this.options.title);
+    else if (typeof this.options.title === 'object') {
+      $.when(this.options.title).then(function(result) {
+        deferred.resolve(result);
+      }, function(err) {
+        deferred.reject(err);
+      });
     }
     else {
       deferred.resolve(this.$trigger.attr('title'));
