@@ -169,7 +169,7 @@
             deferred.resolve({
               title: 'Promise Success',
               state: 'success',
-              callback: function() {
+              onShow: function() {
                 this.options.state = null;
                 this.options.title = whatever;
               }

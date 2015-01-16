@@ -47,6 +47,8 @@
 
     this.visible = true;
 
+    this.$trigger.attr('aria-labelledby', this.id);
+
     // Get title
     this.getTitle($tooltip).then(
       function(options) {
@@ -74,7 +76,7 @@
           .addClass('tooltip-' + this.options.placement)
           .offset(this.getOffset($tooltip));
 
-        this.options.callback.call(this, $tooltip, this.$trigger);
+        this.options.onShow.call(this, this.$trigger, $tooltip);
       }.bind(this),
       function(err, options) {
         $tooltip
@@ -85,11 +87,9 @@
           .addClass('tooltip-error')
           .offset(this.getOffset($tooltip));
 
-        this.options.callback.call(this, $tooltip, this.$trigger);
+        this.options.onShow.call(this, this.$trigger, $tooltip);
       }.bind(this)
     );
-
-    this.$trigger.attr('aria-labelledby', this.id);
 
     // Shown event
     var shownEvent = $.Event('shown.lt.tooltip', {
@@ -186,6 +186,8 @@
     $tooltip.remove();
     this.$trigger.attr('aria-labelledby', null);
 
+    this.options.onHide.call(this, this.$trigger);
+
     // Hidden event
     var hiddenEvent = $.Event('hidden.lt.tooltip', {
       relatedTarget: $tooltip
@@ -214,7 +216,8 @@
   }
 
   Plugin.defaults = {
-    callback: function() {},
+    onShow: function() {},
+    onHide: function() {},
     html: false,
     state: null,
     placement: 'top',

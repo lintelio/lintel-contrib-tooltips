@@ -88,8 +88,8 @@ Creates a new tooltip state, including arrow colors for each placement.
 ```scss
 .tooltip-primary {
   @include tooltip-state(
-    $bg: $tooltip-primary-bg, 
-    $border: $tooltip-primary-border, 
+    $bg: $tooltip-primary-bg,
+    $border: $tooltip-primary-border,
     $text: $tooltip-primary-text
   );
 }
@@ -97,7 +97,7 @@ Creates a new tooltip state, including arrow colors for each placement.
 
 ## JavaScript
 
-You will have to call the jQuery plugin on each element you want to have a tooltip. 
+You will have to call the jQuery plugin on each element you want to have a tooltip.
 
 One way to do that would be to add `data-toggle="tooltip"` to all elements that should have a tooltip and call the following from your javascript:
 ```js
@@ -108,11 +108,12 @@ $('[data-toggle="tooltip"]').tooltip();
 
 Name      | Type                           | Default             | Description
 --------- | ------------------------------ | ------------------- | -----------
-callback  | function                       |                     | Function to execute every time tooltip is shown / hidden.
+onShow    | function                       |                     | Callback function to execute every time tooltip is shown.
+onHide    | function                       |                     | Callback function to execute every time tooltip is hidden.
 html      | Boolean                        | false               | Display HTML content. Note: you must sanitize user input.
 state     | string                         |                     | Tooltip type (ex. `primary`, `error`, `success`).
 placement | string                         | 'top'               | Top, right, bottom, or left.
-title     | string, function, $.Deferred() |                     | Can be a string, function, function that returns a deferred, or a deferred. <br><br> If using a function, result will be cached. To run function again, reset `this.options.title` to the same function in `callback`. See `test/fixtures/tooltip.html` for example.
+title     | string, function, $.Deferred() |                     | Can be a string, function, function that returns a deferred, or a deferred. <br><br> If using a function, result will be cached. To run function again, reset `this.options.title` to the same function in `onShow`. See `test/fixtures/tooltip.html` for example.
 template  | string                         | see `js/tooltip.js` | Template must contain these elements: `.tooltip > .tooltip-content`. The content of `.tooltip-content` will only be visible if a promise is used.
 
 ## Examples
@@ -142,7 +143,7 @@ $('#myButton').tooltip({
 });
 ```
 
-#### Function 
+#### Function
 ```js
 $('#myButton').tooltip({
   title: function() {
@@ -179,7 +180,7 @@ var myTooltipGetter = function(tooltip, button) {
     deferred.resolve({
       title: 'Tooltip Title',
       state: 'success',
-      callback: function() {
+      onShow: function() {
         // reset state
         this.options.state = null;
         // reset title after displaying tooltip
@@ -223,7 +224,7 @@ $('#myButton').tooltip({
 #### Data-Attributes
 ```html
 <button data-title="Tooltip Title" data-placement="bottom" data-state="warning" data-toggle="tooltip" type="button">I have a tooltip.</button>
-``` 
+```
 ```js
 $('[data-toggle="tooltip"]').tooltip();
 ```
@@ -231,7 +232,7 @@ $('[data-toggle="tooltip"]').tooltip();
 #### Title Attribute
 ```html
 <button title="Tooltip Title" type="button">I have a tooltip.</button>
-``` 
+```
 ```js
 $('[data-toggle="tooltip"]').tooltip();
 ```
