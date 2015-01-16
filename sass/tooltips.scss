@@ -79,7 +79,7 @@
   }
 
   &:before {
-    margin-top: 1px;
+    margin-bottom: 1px;
     @include triangle(
       $direction: 'up',
       $size: $tooltip-arrow-width,

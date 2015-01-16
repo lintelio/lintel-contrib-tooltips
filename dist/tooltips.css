@@ -44,7 +44,7 @@
   .tooltip-bottom > .tooltip-content:before, .tooltip-bottom > .tooltip-content:after {
     bottom: 100%; }
   .tooltip-bottom > .tooltip-content:before {
-    margin-top: 1px;
+    margin-bottom: 1px;
     height: 0;
     width: 0;
     border-left: 5px solid transparent;
