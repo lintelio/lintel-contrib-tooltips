@@ -1,7 +1,6 @@
 // Please try to maintain the same code style as outlined here:
 // https://github.com/lintelio/lintel/blob/master/CONTRIBUTING.md
-
-@mixin tooltip-arrows($bg, $border) {
+@mixin tooltip-arrow-top($bg, $border) {
   &.tooltip-top > .tooltip-content {
     &:before {
       border-top-color: $border;
@@ -11,7 +10,9 @@
       border-top-color: $bg;
     }
   }
+}
 
+@mixin tooltip-arrow-right($bg, $border) {
   &.tooltip-right > .tooltip-content {
     &:before {
       border-right-color: $border;
@@ -21,7 +22,9 @@
       border-right-color: $bg;
     }
   }
+}
 
+@mixin tooltip-arrow-bottom($bg, $border) {
   &.tooltip-bottom > .tooltip-content {
     &:before {
       border-bottom-color: $border;
@@ -31,7 +34,9 @@
       border-bottom-color: $bg;
     }
   }
+}
 
+@mixin tooltip-arrow-left($bg, $border) {
   &.tooltip-left > .tooltip-content {
     &:before {
       border-left-color: $border;
@@ -41,6 +46,13 @@
       border-left-color: $bg;
     }
   }
+}
+
+@mixin tooltip-arrows($bg, $border) {
+  @include tooltip-arrow-top($bg, $border);
+  @include tooltip-arrow-right($bg, $border);
+  @include tooltip-arrow-bottom($bg, $border);
+  @include tooltip-arrow-left($bg, $border);
 }
 
 @mixin tooltip-state($bg, $border, $text) {
